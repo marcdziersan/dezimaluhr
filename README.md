@@ -2,6 +2,8 @@
 
 Die Dezimaluhr ist eine interessante und ungewöhnliche Art der Zeitmessung, die anstelle des traditionellen 24-Stunden- oder 12-Stunden-Formats auf einem Dezimalsystem basiert. Im Gegensatz zur herkömmlichen Zeitmessung, die in Stunden, Minuten und Sekunden unterteilt ist, wird die Zeit in der Dezimaluhr in 10-stellige Einheiten aufgeteilt.
 
+<a href="https://marcdziersan.github.io/dezimaluhr/clock.html">DEMO</a>
+
 ## Ursprung und Geschichte
 
 Die Idee einer Dezimaluhr geht auf die Französische Revolution im späten 18. Jahrhundert zurück. Die Revolutionäre wollten das metrische System als Grundlage für alle Messungen etablieren und begannen daher auch, die Zeitmessung zu dezentralisieren und mit einem Dezimalsystem zu gestalten. In diesem Zusammenhang wurde die sogenannte **"Französische Dezimaluhr"** eingeführt, die 10 Stunden pro Tag anstatt der üblichen 24 Stunden nutzte, wobei jede Stunde in 100 Minuten unterteilt war und jede Minute in 100 Sekunden.
