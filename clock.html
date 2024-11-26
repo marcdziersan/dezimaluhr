@@ -1,0 +1,171 @@
+<!DOCTYPE html>  <!-- Definiert den Dokumenttyp als HTML5 -->
+<html lang="en">  <!-- Start des HTML-Dokuments, "en" bedeutet Englisch -->
+
+<head>
+    <!-- Dieser Bereich enthält Meta-Daten und das Stylesheet -->
+    <meta charset="UTF-8">  <!-- Gibt den Zeichensatz an, der in diesem Dokument verwendet wird -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  <!-- Stellt sicher, dass die Seite auf mobilen Geräten gut aussieht -->
+    <title>Rheinturm-Uhr (Animiert)</title>  <!-- Der Titel der Seite, der im Tab des Browsers angezeigt wird -->
+    
+    <style>
+        /* CSS-Styles zur Gestaltung der Uhr und Animationen */
+
+        body {
+            display: flex;  /* Verwenden von Flexbox für die Anordnung der Seite */
+            justify-content: center;  /* Zentriert den Inhalt horizontal */
+            align-items: center;  /* Zentriert den Inhalt vertikal */
+            height: 100vh;  /* Setzt die Höhe des Körpers auf 100% der Ansichtshöhe (voller Bildschirm) */
+            background-color: #121212;  /* Dunkler Hintergrund für den "Nachtmodus" */
+            margin: 0;  /* Entfernt den Standardabstand des Browsers */
+            font-family: Arial, sans-serif;  /* Schriftart für den Text */
+        }
+
+        svg {
+            width: 100px;  /* Die Breite des SVG-Elements (Uhr) */
+            height: 500px;  /* Die Höhe des SVG-Elements (Uhr) */
+        }
+
+        .led {
+            fill: gray;  /* Alle LED-Kreise sind anfangs grau */
+        }
+
+        .led.active {
+            fill: lime;  /* Wenn eine LED aktiviert wird, wird sie grün */
+        }
+
+        /* Animationsdefinition für das Blinken der roten Punkte */
+        @keyframes blink {
+            0% {
+                opacity: 0;  /* Zu Beginn ist der Punkt unsichtbar */
+            }
+            50% {
+                opacity: 1;  /* Zur Hälfte der Animation ist der Punkt sichtbar */
+            }
+            100% {
+                opacity: 0;  /* Am Ende ist der Punkt wieder unsichtbar */
+            }
+        }
+
+        .blink {
+            animation: blink 5s infinite;  /* Die Animation wird für die Klasse .blink angewendet */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Dieser Bereich enthält das SVG-Element, das unsere Uhr darstellt -->
+    <svg id="rheinturm" viewBox="0 0 100 500"> <!-- Das SVG dient als Container für die Uhr -->
+
+        <!-- Stunden -->
+        <g id="hours-tens"> <!-- Gruppe für die Zehner-Stellen der Stunden -->
+            <circle class="led" id="hours-20" cx="50" cy="20" r="4" />  <!-- Erste LED für die Zehner-Stelle der Stunden -->
+            <circle class="led" id="hours-10" cx="50" cy="30" r="4" />  <!-- Zweite LED für die Zehner-Stelle der Stunden -->
+        </g>
+        <g id="hours-ones"> <!-- Gruppe für die Einer-Stellen der Stunden -->
+            <!-- Die 9 LEDs repräsentieren die Zahlen 0 bis 9 für die Stunden -->
+            <circle class="led" id="hours-9" cx="50" cy="50" r="4" />
+            <circle class="led" id="hours-8" cx="50" cy="60" r="4" />
+            <circle class="led" id="hours-7" cx="50" cy="70" r="4" />
+            <circle class="led" id="hours-6" cx="50" cy="80" r="4" />
+            <circle class="led" id="hours-5" cx="50" cy="90" r="4" />
+            <circle class="led" id="hours-4" cx="50" cy="100" r="4" />
+            <circle class="led" id="hours-3" cx="50" cy="110" r="4" />
+            <circle class="led" id="hours-2" cx="50" cy="120" r="4" />
+            <circle class="led" id="hours-1" cx="50" cy="130" r="4" />
+        </g>
+
+        <!-- Minuten -->
+        <g id="minutes-tens"> <!-- Gruppe für die Zehner-Stellen der Minuten -->
+            <!-- Diese LEDs repräsentieren die Minuten von 0 bis 50 -->
+            <circle class="led" id="minutes-50" cx="50" cy="150" r="4" />
+            <circle class="led" id="minutes-40" cx="50" cy="160" r="4" />
+            <circle class="led" id="minutes-30" cx="50" cy="170" r="4" />
+            <circle class="led" id="minutes-20" cx="50" cy="180" r="4" />
+            <circle class="led" id="minutes-10" cx="50" cy="190" r="4" />
+        </g>
+        <g id="minutes-ones"> <!-- Gruppe für die Einer-Stellen der Minuten -->
+            <!-- Diese LEDs repräsentieren die Minuten von 0 bis 9 -->
+            <circle class="led" id="minutes-9" cx="50" cy="210" r="4" />
+            <circle class="led" id="minutes-8" cx="50" cy="220" r="4" />
+            <circle class="led" id="minutes-7" cx="50" cy="230" r="4" />
+            <circle class="led" id="minutes-6" cx="50" cy="240" r="4" />
+            <circle class="led" id="minutes-5" cx="50" cy="250" r="4" />
+            <circle class="led" id="minutes-4" cx="50" cy="260" r="4" />
+            <circle class="led" id="minutes-3" cx="50" cy="270" r="4" />
+            <circle class="led" id="minutes-2" cx="50" cy="280" r="4" />
+            <circle class="led" id="minutes-1" cx="50" cy="290" r="4" />
+        </g>
+
+        <!-- Sekunden -->
+        <g id="seconds-tens"> <!-- Gruppe für die Zehner-Stellen der Sekunden -->
+            <!-- Diese LEDs repräsentieren die Sekunden von 0 bis 50 -->
+            <circle class="led" id="seconds-50" cx="50" cy="310" r="4" />
+            <circle class="led" id="seconds-40" cx="50" cy="320" r="4" />
+            <circle class="led" id="seconds-30" cx="50" cy="330" r="4" />
+            <circle class="led" id="seconds-20" cx="50" cy="340" r="4" />
+            <circle class="led" id="seconds-10" cx="50" cy="350" r="4" />
+        </g>
+        <g id="seconds-ones"> <!-- Gruppe für die Einer-Stellen der Sekunden -->
+            <!-- Diese LEDs repräsentieren die Sekunden von 0 bis 9 -->
+            <circle class="led" id="seconds-9" cx="50" cy="370" r="4" />
+            <circle class="led" id="seconds-8" cx="50" cy="380" r="4" />
+            <circle class="led" id="seconds-7" cx="50" cy="390" r="4" />
+            <circle class="led" id="seconds-6" cx="50" cy="400" r="4" />
+            <circle class="led" id="seconds-5" cx="50" cy="410" r="4" />
+            <circle class="led" id="seconds-4" cx="50" cy="420" r="4" />
+            <circle class="led" id="seconds-3" cx="50" cy="430" r="4" />
+            <circle class="led" id="seconds-2" cx="50" cy="440" r="4" />
+            <circle class="led" id="seconds-1" cx="50" cy="450" r="4" />
+        </g>
+
+        <!-- Blinkende Punkte -->
+        <circle id="blink-seconds-minutes-1" cx="40" cy="300" r="4" fill="red" class="blink" />
+        <circle id="blink-seconds-minutes-2" cx="50" cy="300" r="4" fill="red" class="blink" />
+        <circle id="blink-seconds-minutes-3" cx="60" cy="300" r="4" fill="red" class="blink" />
+
+        <circle id="blink-minutes-hours-1" cx="40" cy="140" r="4" fill="red" class="blink" />
+        <circle id="blink-minutes-hours-2" cx="50" cy="140" r="4" fill="red" class="blink" />
+        <circle id="blink-minutes-hours-3" cx="60" cy="140" r="4" fill="red" class="blink" />
+        
+    </svg>
+
+    <!-- JavaScript, das die Uhr aktualisiert und die Animation der LEDs steuert -->
+    <script>
+        function updateClock() {
+            const now = new Date();  // Holt das aktuelle Datum und die Uhrzeit
+            const hours = now.getHours();  // Holt die Stunden
+            const minutes = now.getMinutes();  // Holt die Minuten
+            const seconds = now.getSeconds();  // Holt die Sekunden
+
+            // Stunden
+            updateLEDs('hours-tens', Math.floor(hours / 10));  // Zehnerstelle der Stunden
+            updateLEDs('hours-ones', hours % 10);  // Einerstelle der Stunden
+
+            // Minuten
+            updateLEDs('minutes-tens', Math.floor(minutes / 10));  // Zehnerstelle der Minuten
+            updateLEDs('minutes-ones', minutes % 10);  // Einerstelle der Minuten
+
+            // Sekunden
+            updateLEDs('seconds-tens', Math.floor(seconds / 10));  // Zehnerstelle der Sekunden
+            updateLEDs('seconds-ones', seconds % 10);  // Einerstelle der Sekunden
+        }
+
+        // Diese Funktion aktiviert oder deaktiviert LEDs basierend auf dem übergebenen Wert
+        function updateLEDs(group, value) {
+            const leds = Array.from(document.querySelectorAll(`#${group} .led`));  // Holt alle LEDs der angegebenen Gruppe
+            leds.reverse();  // Invertiert die Reihenfolge der LEDs für die Animation (von unten nach oben)
+            leds.forEach((led, index) => {
+                if (index < value) {  // Wenn der Index der LED kleiner als der Wert ist, wird sie aktiviert
+                    led.classList.add('active');
+                } else {  // Ansonsten wird sie deaktiviert
+                    led.classList.remove('active');
+                }
+            });
+        }
+
+        setInterval(updateClock, 1000);  // Die Uhr wird jede Sekunde aktualisiert
+        updateClock();  // Initiale Aktualisierung der Uhr
+    </script>
+
+</body>
+</html>
