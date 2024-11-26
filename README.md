@@ -27,3 +27,5 @@ Durch die dezimale Anordnung und die Animation der LEDs entsteht ein optisches S
 Die Dezimaluhr mag in der Praxis nie vollständig Einzug gehalten haben, aber ihre innovative Idee lebt weiter. Sie dient heute als faszinierendes künstlerisches Konzept und ist ein herausragendes Beispiel für die Verschmelzung von **Technologie** und **Kunst**. Uhren wie die **Rheinturm-Uhr in Düsseldorf** zeigen, dass die Dezimaluhr auch im 21. Jahrhundert ihren Platz in der Gestaltung von öffentlichen Kunstprojekten und Zeitmesssystemen finden kann.
 
 Die Verwendung eines Dezimalsystems zur Darstellung der Zeit bietet eine einzigartige Perspektive auf die Zeitwahrnehmung und bleibt ein spannendes Thema für zukünftige Entwicklungen in der Welt der Uhren und visuellen Medien.
+
+<a href="https://marcdziersan.github.io/dezimaluhr/clock.html">DEMO</a>
