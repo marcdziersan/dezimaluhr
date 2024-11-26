@@ -131,40 +131,54 @@
 
     <!-- JavaScript, das die Uhr aktualisiert und die Animation der LEDs steuert -->
     <script>
-        function updateClock() {
-            const now = new Date();  // Holt das aktuelle Datum und die Uhrzeit
-            const hours = now.getHours();  // Holt die Stunden
-            const minutes = now.getMinutes();  // Holt die Minuten
-            const seconds = now.getSeconds();  // Holt die Sekunden
+// Diese Funktion wird alle 1000 Millisekunden (1 Sekunde) aufgerufen, um die Uhrzeit zu aktualisieren
+function updateClock() {
+    const now = new Date();  // Holt das aktuelle Datum und die Uhrzeit als Date-Objekt
 
-            // Stunden
-            updateLEDs('hours-tens', Math.floor(hours / 10));  // Zehnerstelle der Stunden
-            updateLEDs('hours-ones', hours % 10);  // Einerstelle der Stunden
+    // Holen der aktuellen Stunden, Minuten und Sekunden aus dem Date-Objekt
+    const hours = now.getHours();  // Gibt die Stunden im 24-Stunden-Format zurück (0 bis 23)
+    const minutes = now.getMinutes();  // Gibt die Minuten zurück (0 bis 59)
+    const seconds = now.getSeconds();  // Gibt die Sekunden zurück (0 bis 59)
 
-            // Minuten
-            updateLEDs('minutes-tens', Math.floor(minutes / 10));  // Zehnerstelle der Minuten
-            updateLEDs('minutes-ones', minutes % 10);  // Einerstelle der Minuten
+    // Aktualisiert die LEDs der Stunden-Anzeige
+    // Die Stunden werden in Zehner- und Einerstellen unterteilt, z. B. 12 Uhr -> Zehner: 1, Einer: 2
+    updateLEDs('hours-tens', Math.floor(hours / 10));  // Holt die Zehnerstelle der Stunden
+    updateLEDs('hours-ones', hours % 10);  // Holt die Einerstelle der Stunden
 
-            // Sekunden
-            updateLEDs('seconds-tens', Math.floor(seconds / 10));  // Zehnerstelle der Sekunden
-            updateLEDs('seconds-ones', seconds % 10);  // Einerstelle der Sekunden
+    // Aktualisiert die LEDs der Minuten-Anzeige
+    // Die Minuten werden ebenfalls in Zehner- und Einerstellen unterteilt, z. B. 34 Minuten -> Zehner: 3, Einer: 4
+    updateLEDs('minutes-tens', Math.floor(minutes / 10));  // Holt die Zehnerstelle der Minuten
+    updateLEDs('minutes-ones', minutes % 10);  // Holt die Einerstelle der Minuten
+
+    // Aktualisiert die LEDs der Sekunden-Anzeige
+    // Die Sekunden werden in Zehner- und Einerstellen unterteilt, z. B. 57 Sekunden -> Zehner: 5, Einer: 7
+    updateLEDs('seconds-tens', Math.floor(seconds / 10));  // Holt die Zehnerstelle der Sekunden
+    updateLEDs('seconds-ones', seconds % 10);  // Holt die Einerstelle der Sekunden
+}
+
+// Diese Funktion wird verwendet, um die LEDs in der richtigen Gruppe (z. B. Stunden, Minuten, Sekunden)
+// basierend auf dem übergebenen Wert (z. B. "7" für 7 LEDs, die aktiviert werden) zu aktivieren/deaktivieren
+function updateLEDs(group, value) {
+    // Holt alle <circle> Elemente mit der Klasse 'led' innerhalb des angegebenen <g> (Gruppe) Tags
+    const leds = Array.from(document.querySelectorAll(`#${group} .led`));  // Wandelt NodeList in ein Array um
+    leds.reverse();  // Kehrt die Reihenfolge der LEDs um, damit wir von unten nach oben zählen können (Anordnung in SVG)
+
+    // Iteriert über jedes LED-Element und prüft, ob es basierend auf dem Wert aktiviert werden soll
+    leds.forEach((led, index) => {
+        // Wenn der Index der LED kleiner als der angegebene Wert ist, wird sie aktiviert (grün)
+        if (index < value) {
+            led.classList.add('active');  // Fügt der LED die 'active' Klasse hinzu, um sie grün zu machen
+        } else {
+            led.classList.remove('active');  // Entfernt die 'active' Klasse, um die LED zu deaktivieren (grau)
         }
+    });
+}
 
-        // Diese Funktion aktiviert oder deaktiviert LEDs basierend auf dem übergebenen Wert
-        function updateLEDs(group, value) {
-            const leds = Array.from(document.querySelectorAll(`#${group} .led`));  // Holt alle LEDs der angegebenen Gruppe
-            leds.reverse();  // Invertiert die Reihenfolge der LEDs für die Animation (von unten nach oben)
-            leds.forEach((led, index) => {
-                if (index < value) {  // Wenn der Index der LED kleiner als der Wert ist, wird sie aktiviert
-                    led.classList.add('active');
-                } else {  // Ansonsten wird sie deaktiviert
-                    led.classList.remove('active');
-                }
-            });
-        }
+// Diese Zeile sorgt dafür, dass die Funktion updateClock jede Sekunde ausgeführt wird
+setInterval(updateClock, 1000);  // Ruft updateClock alle 1000 Millisekunden (1 Sekunde) auf
 
-        setInterval(updateClock, 1000);  // Die Uhr wird jede Sekunde aktualisiert
-        updateClock();  // Initiale Aktualisierung der Uhr
+// Diese Zeile sorgt dafür, dass die Uhr gleich zu Beginn aktualisiert wird, wenn die Seite geladen wird
+updateClock();  // Führt die updateClock Funktion einmal sofort aus, um den aktuellen Stand der Uhr anzuzeigen
     </script>
 
 </body>
