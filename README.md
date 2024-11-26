@@ -2,7 +2,7 @@
 
 Die Dezimaluhr ist eine interessante und ungewöhnliche Art der Zeitmessung, die anstelle des traditionellen 24-Stunden- oder 12-Stunden-Formats auf einem Dezimalsystem basiert. Im Gegensatz zur herkömmlichen Zeitmessung, die in Stunden, Minuten und Sekunden unterteilt ist, wird die Zeit in der Dezimaluhr in 10-stellige Einheiten aufgeteilt.
 
-<a href="https://marcdziersan.github.io/dezimaluhr/clock.html">DEMO</a>
+<a href="https://marcdziersan.github.io/dezimaluhr/clock.html">DEMO</a> Die Demo ist eine Eigeninterpretation im 24 Std Format
 
 ## Ursprung und Geschichte
 
@@ -30,4 +30,4 @@ Die Dezimaluhr mag in der Praxis nie vollständig Einzug gehalten haben, aber ih
 
 Die Verwendung eines Dezimalsystems zur Darstellung der Zeit bietet eine einzigartige Perspektive auf die Zeitwahrnehmung und bleibt ein spannendes Thema für zukünftige Entwicklungen in der Welt der Uhren und visuellen Medien.
 
-<a href="https://marcdziersan.github.io/dezimaluhr/clock.html">DEMO</a>
+<a href="https://marcdziersan.github.io/dezimaluhr/clock.html">DEMO</a>  Die Demo ist eine Eigeninterpretation im 24 Std Format
